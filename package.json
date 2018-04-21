@@ -1,0 +1,36 @@
+{
+  "name": "grenache-microservices-client",
+  "version": "1.0.0",
+  "description": "Slice and store data",
+  "scripts": {
+    "test": "npm run lint && npm run unit",
+    "lint": "standard",
+    "unit": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ezeswci/grenache-microservices-client.git"
+  },
+  "keywords": [
+    "DHT",
+    "grenache",
+    "kademlia"
+  ],
+  "author": "Ezequiel Wernicke <wernicke.ezequiel@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "grenache-grape": "git+https://github.com/bitfinexcom/grenache-grape.git",
+    "mocha": "^4.0.1",
+    "standard": "^10.0.3"
+  },
+  "dependencies": {
+    "async": "^2.6.0",
+    "bencode": "^1.0.0",
+    "ed25519-supercop": "^1.0.2",
+    "express": "^4.16.3",
+    "grenache-nodejs-link": "git+https://github.com/bitfinexcom/grenache-nodejs-link.git",
+    "grenache-nodejs-ws": "^0.7.4",
+    "lodash": "^4.17.4",
+    "ws": "^5.1.1"
+  }
+}

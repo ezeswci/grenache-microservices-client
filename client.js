@@ -18,16 +18,16 @@ function buy (res) {
   } else {
     const payload = {'action': 'store', 'data': book.getActualPrice()}
     peer.request('crypto_worker', payload, { timeout: 100000 }, (err, result) => {
-      if (err) res.send(JSON.stringify({'error': err}))
-      res.send(JSON.stringify({'buy': result.price, 'hash': result.hash}))
+      if (err || result.hasOwnProperty('error')) (err) ? res.send(JSON.stringify({'error': err})) : res.send(JSON.stringify({'error': result.error}))
+      else res.send(JSON.stringify({'buy': result.price, 'hash': result.hash}))
     })
   }
 }
 function check (hash, res) {
   const payload = {'action': 'check', 'data': hash}
   peer.request('crypto_worker', payload, { timeout: 100000 }, (err, result) => {
-    if (err) res.send(JSON.stringify({'error': err}))
-    res.send(JSON.stringify({'actual': book.getActualPrice(), 'buy': result.price, 'gain': book.gain(result.price), 'hash': result.hash}))
+    if (err || result.hasOwnProperty('error')) (err) ? res.send(JSON.stringify({'error': err})) : res.send(JSON.stringify({'error': result.error}))
+    else res.send(JSON.stringify({'actual': book.getActualPrice(), 'buy': result.price, 'gain': book.gain(result.price), 'hash': result.hash}))
   })
 }
 
